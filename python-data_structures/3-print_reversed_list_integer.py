@@ -2,6 +2,6 @@
 def print_reversed_list_integer(my_list=[]):
     if isinstance(my_list, list):
         my_list.reverse()
-    if my_list is not None:
-    for num in my_list:
-        print('{:d}'.format(num))
+      if my_list is not None:
+         for num in my_list:
+             print('{:d}'.format(num))
