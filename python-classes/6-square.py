@@ -2,6 +2,10 @@
 class Square:
     """Defines a square."""
 
+    def __str__(self):
+        """String representation constructor of this square"""
+        return self.my_print()
+
     def __init__(self, size=0, position=(0, 0)):
         """Constructor.
 
@@ -51,22 +55,19 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Prints square with char #."""
+        """Returns square with char #"""
         if self.__size == 0:
-            print()
+            return ""
         else:
+            result = ""
             for _ in range(self.__position[1]):
-                print()
+                result += "\n"
             for _ in range(self.__size):
-                print("{}{}".format(" " * self.__position[0], "#" * self.__size))
+                result += "{}{}\n".format(" " * self.__position[0], "#" * self.__size)
+            return result.strip()
 
-    def __str__(self):
-        """String representation constructor of this square."""
-        square_str = ""
-        if self.__size == 0:
-            return square_str
-        for _ in range(self.__position[1]):
-            square_str += "\n"
-        for _ in range(self.__size):
-            square_str += "{}{}\n".format(" " * self.__position[0], "#" * self.__size)
-        return square_str.strip()
+
+# Example usage:
+square = Square(5, (2, 1))
+print(square)
+
