@@ -1,31 +1,30 @@
 #!/usr/bin/python3
-# 6-rectangle.py
-"""Defines a Rectangle class."""
+"""A class Rectangle that defines a rectangle based on 1-rectangle.py"""
 
 
 class Rectangle:
-    """Represent a rectangle.
+    """The Rectangle class
 
     Attributes:
-        number_of_instances (int): The number of Rectangle instances.
+        number_of_instances (int): The number of Rectangle obj.
     """
 
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
-        """Initialize a new Rectangle.
+        """Initialize a Rectangle object.
 
         Args:
-            width (int): The width of the new rectangle.
-            height (int): The height of the new rectangle.
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
         """
-        type(self).number_of_instances += 1
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
-        """Get/set the width of the Rectangle."""
+        """property(get&set) for the width of the Rectangle."""
         return self.__width
 
     @width.setter
@@ -38,7 +37,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """Get/set the height of the Rectangle."""
+        """property(get&set) for the height of the Rectangle."""
         return self.__height
 
     @height.setter
@@ -50,37 +49,30 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Return the area of the Rectangle."""
+        """Returns the area of the Rectangle."""
         return (self.__width * self.__height)
 
     def perimeter(self):
-        """Return the perimeter of the Rectangle."""
+        """Returns the perimeter of the Rectangle."""
         if self.__width == 0 or self.__height == 0:
             return (0)
         return ((self.__width * 2) + (self.__height * 2))
 
     def __str__(self):
-        """Return the printable representation of the Rectangle.
-
-        Represents the rectangle with the # character.
-        """
+        """Returns the rectangle with the character #"""
         if self.__width == 0 or self.__height == 0:
-            return ("")
-
-        rect = []
-        for i in range(self.__height):
-            [rect.append('#') for j in range(self.__width)]
-            if i != self.__height - 1:
-                rect.append("\n")
-        return ("".join(rect))
+            return ""
+        rectangle_str = ""
+        for _ in range(self.__height):
+            rectangle_str += "#" * self.__width + "\n"
+        return rectangle_str[:-1]
 
     def __repr__(self):
         """Return the string representation of the Rectangle."""
-        rect = "Rectangle(" + str(self.__width)
-        rect += ", " + str(self.__height) + ")"
-        return (rect)
+        string = f"Rectangle({str(self.__width)}, {str(self.__height)})"
+        return string
 
     def __del__(self):
-        """Print a message for every deletion of a Rectangle."""
-        type(self).number_of_instances -= 1
+        """Prints Bye rectangle... when a Rectangle obj is deleted"""
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
